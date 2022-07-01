@@ -6,9 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Student as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model; //Model Eloquent
 
-class Student extends Model
+class Student extends Model //Model definition
 {
     protected $table = 'student'; // Eloquent will create a student model to store records in the student table
     protected $primaryKey = 'id_student'; // Calling DB contents with primary key
@@ -19,7 +19,12 @@ class Student extends Model
     protected $fillable = [
         'Nim',
         'Name',
-        'Class',
+        'Class_id',
         'Major',
     ];
+
+    public function class()
+    {
+        return $this->belongsTo(ClassModel::class);
+    }
 }

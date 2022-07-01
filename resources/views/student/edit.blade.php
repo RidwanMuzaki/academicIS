@@ -30,7 +30,11 @@
                     </div>
                     <div class="form-group">
                         <label for="Class">Class</label>
-                        <input type="Class" name="Class" class="form-control" id="Class" value="{{ $Student->class }}" aria-describedby="Class">
+                        <select name="Class" class="form-control">
+                            @foreach($class as $kls)
+                                <option value="{{$kls->id}}" {{  $Student->class_id == $kls->id ? 'selected' : ''  }}>{{$kls->class_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="Major">Major</label>
